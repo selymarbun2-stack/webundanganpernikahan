@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1200') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            animation: fadeIn 2s ease-in;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .hero .date {
+            font-size: 1.5em;
+            margin-top: 20px;
+            letter-spacing: 2px;
+        }
+
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: rgb(255, 255, 255);
+            margin: 20px auto;
+        }
+
+        /* Couple Section */
+        .couple-section {
+            padding: 100px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .couple-section h2 {
+            font-size: 3em;
+            margin-bottom: 60px;
+            color: #8b7355;
+        }
+
+        .couple-container {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .couple-card {
+            flex: 0 1 300px;
+            animation: slideUp 1s ease-out;
+        }
+
+        .couple-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #8b7355;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .couple-card h3 {
+            font-size: 2em;
+            color: #8b7355;
+            margin-bottom: 10px;
+        }
+
+        .couple-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .heart {
+            font-size: 3em;
+            color: #e74c3c;
+            margin: 0 40px;
+            align-self: center;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .story-section h2 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #8b7355;
+        }
+
+        .story-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story-item {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .story-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .story-img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .story-text {
+            flex: 1;
+        }
+
+        .story-text h3 {
+            color: #8b7355;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .story-text p {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Event Section */
+        .event-section {
+            padding: 100px 20px;
+            background: white;
+            text-align: center;
+        }
+
+        .event-section h2 {
+            font-size: 3em;
+            margin-bottom: 60px;
+            color: #8b7355;
+        }
+
+        .event-cards {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .event-card {
+            flex: 0 1 350px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-card h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .event-card p {
+            font-size: 1.1em;
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+
+        .event-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 100px 20px;
+            background: #f8f9fa;
+        }
+
+        .gallery-section h2 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #8b7355;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* RSVP Section */
+        .rsvp-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .rsvp-section h2 {
+            font-size: 3em;
+            margin-bottom: 40px;
+        }
+
+        .rsvp-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            background: white;
+            color: #667eea;
+            padding: 15px 50px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: #f8f9fa;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer p {
+            line-height: 1.8;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .couple-container {
+                gap: 40px;
+            }
+
+            .heart {
+                margin: 20px 0;
+            }
+
+            .story-item {
+                flex-direction: column !important;
+            }
+
+            .story-img {
+                width: 100%;
+            }
+
+            .event-cards {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hizkiel & Hizkia</h1>
+            <div class="divider"></div>
+            <p class="date">15 Januari 2025</p>
+        </div>
+    </section>
+    
+    <!-- Couple Section -->
+     
+    <section class="couple-section">
+        <div class="container">
+            <h2>Mempelai</h2>
+            <div class="couple-container">
+                <div class="couple-card">
+                    <img src="gambar 8.webp" alt="Mempelai Pria" class="couple-img">
+                    <h3>Hizkiel Purba</h3>
+                    <p>Putra dari<br>Bapak Nek Purba & Ibu novi Nababan</p>
+                </div>
+                <div class="heart">❤</div>
+                <div class="couple-card">
+                    <img src="gambar 7.jfif" alt="Mempelai Wanita" class="couple-img">
+                    <h3>Hizkia Marpaung</h3>
+                    <p>putri dari<br>Bapak Bian Marpaung & Ibu Sari Marbun</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <h2>Kisah Cinta Kami</h2>
+            <div class="story-container">
+                <div class="story-item">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400" alt="Pertama Bertemu" class="story-img">
+                    <div class="story-text">
+                        <h3>Pertama Bertemu</h3>
+                        <p> Tuhan Yesus mempertemukan Kami pertama kali di sebuah kafe pada musim semi 2020. Pertemuan tak terduga yang mengubah hidup kami selamanya.</p>
+                    </div>
+                </div>
+                <div class="story-item">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400" alt="Jatuh Cinta" class="story-img">
+                    <div class="story-text">
+                        <h3>Jatuh Cinta</h3>
+                        <p>Seiring waktu berlalu, kami semakin dekat dan menyadari bahwa kami sudah siap untuk ke jenjang yang lebih serius .</p>
+                    </div>
+                </div>
+                <div class="story-item">
+                    <img src="gambar 6.jpg" alt="Lamaran" class="story-img">
+                    <div class="story-text">
+                        <h3>Lamaran</h3>
+                        <p>Pada malam yang indah di tepi pantai, Hizkiel melamar Hizkia dengan cincin impian. Dan jawabannya adalah "Ya!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Section -->
+    <section class="event-section">
+        <div class="container">
+            <h2>Informasi Acara</h2>
+            <div class="event-cards">
+                <div class="event-card">
+                    <img  src= alt"">
+                    <h3>Akad Nikah</h3>
+                    <p><strong>Tanggal:</strong> 15 Januari 2025</p>
+                    <p><strong>Waktu:</strong> 08.00 - 10.00 WIB</p>
+                    <p><strong>Lokasi:</strong> Gereja HKBP <br>Jl.K Tik No.112 Merdeka No. 123, Jakarta kota </p>
+                </div>
+                <div class="event-card">
+                    <div class="event-icon"></div>
+                    <h3>Resepsi</h3>
+                    <p><strong>Tanggal:</strong> 15 Juli 2025</p>
+                    <p><strong>Waktu:</strong> 12.00 - 16.00 WIB</p>
+                    <p><strong>Lokasi:</strong> Gedung Grand slipi convention hall<br>Jl.Letjen No. 456, Jakarta</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2>Galeri Foto</h2>
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=400" alt="Gallery 1" class="gallery-img">
+                <img src="gambar 5.jpeg" alt="Gallery 2" class="gallery-img">
+                <img src="gambar 4.webp" alt="Gallery 3" class="gallery-img">
+                <img src="gambar2.jpeg" alt="Gallery 4" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400" alt="Gallery 5" class="gallery-img">
+                <img src="foto1.jfif" alt="Gallery 6" class="gallery-img">
+            </div>
+        </div>
+               
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="rsvp-section">
+        <div class="container">
+            <h2>Konfirmasi Kehadiran</h2>
+            <p style="margin-bottom: 40px; font-size: 1.2em;">Mohon konfirmasi kehadiran Anda</p>
+            <form class="rsvp-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Jumlah Tamu</label>
+                    <select id="guests" name="guests" required>
+                        <option value="">Pilih jumlah tamu</option>
+                        <option value="1">1 Orang</option>
+                        <option value="2">2 Orang</option>
+                        <option value="3">3 Orang</option>
+                        <option value="4">4 Orang</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="attendance">Kehadiran</label>
+                    <select id="attendance" name="attendance" required>
+                        <option value="">Pilih status kehadiran</option>
+                        <option value="hadir">Hadir</option>
+                        <option value="tidak-hadir">Tidak Hadir</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Ucapan & Doa</label>
+                    <textarea id="message" name="message" placeholder="Tulis ucapan dan doa untuk mempelai..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Kirim Konfirmasi</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami<br>apabila Bapak/Ibu/Saudara berkenan hadir<br>untuk memberikan doa restu kepada kami.</p>
+            <div class="divider" style="background: white; margin: 30px auto;"></div>
+            <p><strong>Hizkiel & Hizkia</strong></p>
+            <p style="margin-top: 20px; font-size: 0.9em;">© 2025 - Made with ❤</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const attendance = document.getElementById('attendance').value;
+            
+            if (attendance === 'hadir') {
+                alert(`Terima kasih ${name}! Kami menunggu kehadiran Anda di hari bahagia kami. 🎉`);
+            } else {
+                alert(`Terima kasih ${name} atas konfirmasinya. Kami sangat menghargai doa dan ucapan Anda. 💝`);
+            }
+            
+            e.target.reset();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.couple-card, .story-item, .event-card, .gallery-img').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
